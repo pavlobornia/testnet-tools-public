@@ -3,6 +3,7 @@ services:
   moonbeam:
     image: "purestake/moonbeam:latest"
     restart: always
+    user: "${UID}:${GID}"`
     ports:
       - "30334:30334"
       - "30333:30333"
