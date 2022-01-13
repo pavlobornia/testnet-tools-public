@@ -2,6 +2,7 @@ version: "3.8"
 services:
   moonbeam:
     image: "purestake/moonbeam:latest"
+    container_name: moonbeam
     restart: always
     user: "${uid}:${gid}"
     ports:
