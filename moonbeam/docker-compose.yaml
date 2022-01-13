@@ -9,4 +9,4 @@ services:
       - "30333:30333"
     volumes:
       - /var/lib/alphanet-data:/data
-    command: "--base-path=/data --chain=alphanet --name=\"$NODE_NAME\" --validator --execution=wasm --wasm-execution=compiled --state-cache-size=1 -- --pruning=archive --name=\"$NODE_NAME (Embedded Relay)\""
+    command: "--base-path=/data --chain=alphanet --name=\"$MOONBEAM_NODENAME\" --validator --execution=wasm --wasm-execution=compiled --state-cache-size=1 -- --pruning=archive --name=\"$MOONBEAM_NODENAME (Embedded Relay)\""
