@@ -1,0 +1,3 @@
+#ignore minima account file
+minima/src/accounts*
+*copy
