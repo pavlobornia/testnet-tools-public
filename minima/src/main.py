@@ -1,7 +1,5 @@
-from urllib import response
 import requests
-import json
-import sys
+import time
 import telebot
 import config
 from datetime import datetime, timedelta, timezone
@@ -12,30 +10,33 @@ file = config.file
 bot = telebot.TeleBot(token=token)
 
 def rewards_info(username, password):
-    # Start the session
-    session = requests.Session()
-    # Create the payload
-    payload = {'username': username, 'password': password}
-    # Post the payload to the site to log in
-    s = session.post("https://incentivecash.minima.global/api/login", data=payload)
-    # Navigate to the next page and scrape the data
-    s = session.get('https://incentivecash.minima.global/api/rewards')
-    # Create json object with a rewards data
-    print(s.status_code)
-    if s.status_code != 200:
-        bot.send_message(chat_id, text=f'Connection Error {s.status_code}')
-        sys.exit()
-    json_obj = json.loads(s.text)
-    # Close session
-    session.close
+    while True:
+        # Start the session
+        session = requests.Session()
+        # Create the payload
+        payload = {'username': username, 'password': password}
+        # Post the payload to the site to log in
+        s = session.post("https://incentivecash.minima.global/api/login", data=payload)
+        # Navigate to the next page and scrape the data
+        s = session.get('https://incentivecash.minima.global/api/rewards')
+        # Create json object with a rewards data
+        if s.status_code != 200:
+            bot.send_message(chat_id, text=f'{username}\n'
+                                           f'Сonnection Error {s.status_code}. Will try in 10 min..')
+            session.close
+            time.sleep(600)
+        elif s.status_code == 200:
+            json_obj = s.json()
+            session.close
+            break
     return(json_obj)
 
 # Parse rewards information
 def parse_rewards(json_obj):
-    lastPingDatetime = datetime.strptime((json_obj['lastPing']), '%Y-%m-%dT%H:%M:%S.%f%z')
+    lastPingDatetime = datetime.strptime((json_obj.get('lastPing')), '%Y-%m-%dT%H:%M:%S.%f%z')
     lastPing = lastPingDatetime.strftime("%d %B %Y %H:%M:%S")
-    dailyRewards = str(json_obj['rewards']['dailyRewards'])
-    previousRewards = str(json_obj['rewards']['previousRewards'])
+    dailyRewards = str(json_obj.get('rewards').get('dailyRewards'))
+    previousRewards = str(json_obj.get('rewards').get('previousRewards'))
     return lastPing, lastPingDatetime, dailyRewards, previousRewards
 
 # Send notification to Telegram
