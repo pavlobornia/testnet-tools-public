@@ -11,6 +11,12 @@ rm /etc/systemd/system/archwayd.service
 
 sleep 1
 
+echo "Бекапимо конфіг в папку /tmp"
+
+cp -rf .archway/config /tmp
+
+sleep 1
+
 echo "Перезавантажуємо daemon"
 
 sudo systemctl daemon-reload
