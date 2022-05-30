@@ -1,26 +1,33 @@
 #!/bin/bash
 
-start=$(date +%s)
-
 curl -s https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/logo/logo.sh | bash
 
+# start timer
+start=$(date +%s)
+
+# restart ironfish service to optimize performance
 echo "1. Перезавантажуємо сервіс IronFish"
 systemctl restart ironfishd
 echo "Сервіс перезавантажено"
 
-sleep 5
+# checking status 
 echo ""
-echo "Перевіряємо статус"
+echo "2. Перевіряємо статус"
+sleep 10
 ironfish status
 
+# checking balance 
 echo ""
-echo "Перевіряємо баланс"
+echo "3. Перевіряємо баланс"
 ironfish accounts:balance
 
+#stop timer & count result
 end=$(date +%s)
 seconds=$(echo "$end - $start" | bc)
 
-echo $seconds' sec'
+#show timer result
+echo ""
+echo "Готово, час виконання $seconds' ceкунд'"
 
 
 
