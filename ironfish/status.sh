@@ -13,7 +13,7 @@ echo "Сервіс перезавантажено"
 # checking status 
 echo ""
 echo "2. Перевіряємо статус"
-sleep 10
+sleep 15
 ironfish status
 
 # checking balance 
@@ -27,8 +27,6 @@ seconds=$(echo "$end - $start" | bc)
 
 #show timer result
 echo ""
-echo "Готово, час виконання $seconds' ceкунд'"
-
-
+echo "Готово, час виконання $seconds ceк."
 
 
