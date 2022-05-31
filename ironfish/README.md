@@ -18,6 +18,8 @@ wget -q -O ironfish_deposit.sh https://raw.githubusercontent.com/pavlobornia/tes
 
 ###### Запуск:
 
+Запускаємо через tmux
+
 . ./ironfish_deposit.sh
 
 
