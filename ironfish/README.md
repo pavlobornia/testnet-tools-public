@@ -20,6 +20,15 @@ wget -q -O ironfish_deposit.sh https://raw.githubusercontent.com/pavlobornia/tes
 
 Запускаємо через tmux
 
+Створюємо сессію з назвою deposit
+
+tmux new-session -s deposit
+
+Запускаємо скрипт
+
 . ./ironfish_deposit.sh
 
+Підключитись до сессії:
+
+tmux attach -t session
 
