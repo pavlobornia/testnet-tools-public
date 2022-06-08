@@ -28,7 +28,12 @@ tmux new-session -s deposit
 
 . ./ironfish_deposit.sh
 
+Відключитись від сессії:
+
+tmux detach
+
 Підключитись до сессії:
 
-tmux attach -t session
+tmux attach -t deposit
+
 
