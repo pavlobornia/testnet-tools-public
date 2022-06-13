@@ -1,34 +1,45 @@
-# Скрипти для проекту IronFish
+# Scripts for IronFish
 
-### Перевірка статусу і балансу
+## Balacne and status checking
 
-###### Встановлення:
+### Installig:
 
+```
 wget -q -O ironfish_status.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/ironfish/status.sh && chmod +x ironfish_status.sh
+```
 
-###### Запуск:
+### Running:
 
+```
 . ironfish_status.sh
+```
 
-### Скрипт для відправки транзакцій
+## Script for sending transaction
 
-###### Встановлення:
+### Installing:
 
+```
 wget -q -O ironfish_deposit.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/ironfish/deposit.sh && chmod +x ironfish_deposit.sh
+```
 
-###### Запуск:
+### Running:
 
-Запускаємо через tmux
+Run with tmux
 
-Створюємо сессію з назвою deposit
+Create new session called deposit
 
-tmux new-session -s deposit
+```
+tmux new -s deposit
+```
 
-Запускаємо скрипт
+Run the script
 
+```
 . ./ironfish_deposit.sh
+```
 
-Підключитись до сессії:
+Connect to the session:
 
+```
 tmux attach -t session
-
+```

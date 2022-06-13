@@ -1,5 +1,15 @@
-# Скрипти для проекту KYVE
+# Scripts for KYVE
 
-### Видалення
+## Deleting
 
-wget -q -O kyve_delete.sh.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/feat/ironfish/ironfish/status.sh && chmod +x kyve_delete.sh
+### Installing
+
+```
+wget -q -O kyve_delete.sh.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/kyve/delete.sh && chmod +x kyve_delete.sh
+```
+
+### Running
+
+```
+. kyve_delete.sh
+```
