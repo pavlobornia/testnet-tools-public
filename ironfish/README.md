@@ -11,7 +11,7 @@ wget -q -O ironfish_status.sh https://raw.githubusercontent.com/pavlobornia/test
 ### Running:
 
 ```
-. ironfish_status.sh
+./ironfish_status.sh
 ```
 
 ## Script for sending transaction
@@ -26,20 +26,20 @@ wget -q -O ironfish_deposit.sh https://raw.githubusercontent.com/pavlobornia/tes
 
 Run with tmux
 
-Create new session called deposit
+Create new session called deposit and run the script
 
 ```
-tmux new -s deposit
-```
-
-Run the script
-
-```
-. ./ironfish_deposit.sh
+tmux new-session -d -s deposit './ironfish_deposit.sh'
 ```
 
 Connect to the session:
 
 ```
-tmux attach -t session
+tmux attach -t deposit
+```
+
+Exit:
+
+```
+CTRL + C
 ```
