@@ -1,39 +1,45 @@
-# Скрипти для проекту IronFish
+# Scripts for IronFish
 
-### Перевірка статусу і балансу
+## Balacne and status checking
 
-###### Встановлення:
+### Installig:
 
-wget -q -O ironfish_status.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/feat/ironfish/ironfish/status.sh && chmod +x ironfish_status.sh
+```
+wget -q -O ironfish_status.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/ironfish/status.sh && chmod +x ironfish_status.sh
+```
 
-###### Запуск:
+### Running:
 
-. ironfish_status.sh
+```
+./ironfish_status.sh
+```
 
-### Скрипт для відправки транзакцій
+## Script for sending transaction
 
-###### Встановлення:
+### Installing:
 
-wget -q -O ironfish_deposit.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/feat/ironfish/ironfish/deposit.sh && chmod +x ironfish_deposit.sh
+```
+wget -q -O ironfish_deposit.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/ironfish/deposit.sh && chmod +x ironfish_deposit.sh
+```
 
-###### Запуск:
+### Running:
 
-Запускаємо через tmux
+Run with tmux
 
-Створюємо сессію з назвою deposit
+Create new session called deposit and run the script
 
-tmux new-session -s deposit
+```
+tmux new-session -d -s deposit './ironfish_deposit.sh'
+```
 
-Запускаємо скрипт
+Connect to the session:
 
-. ./ironfish_deposit.sh
+```
+tmux attach-session
+```
 
-Відключитись від сессії:
+Exit:
 
-tmux detach
-
-Підключитись до сессії:
-
-tmux attach -t deposit
-
-
+```
+CTRL - B + D
+```
