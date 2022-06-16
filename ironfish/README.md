@@ -41,5 +41,5 @@ tmux attach-session
 Exit:
 
 ```
-CTRL + C
+CTRL - B + D
 ```
