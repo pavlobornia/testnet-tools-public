@@ -35,7 +35,7 @@ tmux new-session -d -s deposit './ironfish_deposit.sh'
 Connect to the session:
 
 ```
-tmux attach -t deposit
+tmux attach-session
 ```
 
 Exit:
