@@ -19,9 +19,6 @@ then
         echo "Нода оновленна до необхідноі версії"        
 fi
 sleep 10
-echo ""   
-pathfinder -V
-echo ""
 echo "Перевіряємо логи"
 sleep 10
 if dpkg --list | grep -q ccze;
