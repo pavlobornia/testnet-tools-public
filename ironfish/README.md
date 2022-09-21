@@ -5,7 +5,7 @@
 ### Installig:
 
 ```
-wget -q -O ironfish_status.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/feat/ironfish/ironfish/status.sh && chmod +x ironfish_status.sh
+wget -q -O ironfish_status.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/ironfish/status.sh && chmod +x ironfish_status.sh
 ```
 
 ### Running:
@@ -19,7 +19,7 @@ wget -q -O ironfish_status.sh https://raw.githubusercontent.com/pavlobornia/test
 ### Installing:
 
 ```
-wget -q -O ironfish_deposit.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/feat/ironfish/ironfish/deposit.sh && chmod +x ironfish_deposit.sh
+wget -q -O ironfish_deposit.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/ironfish/deposit.sh && chmod +x ironfish_deposit.sh
 ```
 
 ### Running:
