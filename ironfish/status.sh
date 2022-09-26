@@ -11,11 +11,11 @@ echo "Сервіс перезавантажено"
 echo ""
 echo "2. Перевіряємо статус"
 sleep 15
-yarn --cwd ~/ironfish/ironfish-cli/ start status
+/usr/bin/ironfish status
 
 echo ""
 echo "3. Перевіряємо баланс"
-yarn --cwd ~/ironfish/ironfish-cli/ start accounts:balance
+/usr/bin/ironfish accounts:balance
 
 end=$(date +%s)
 seconds=$(echo "$end - $start" | bc)

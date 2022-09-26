@@ -6,19 +6,19 @@ until (( ))
 do 
     start=$(date +%s) 
     . ./.bash_profile 
-    REALY=$( yarn --cwd ~/ironfish/ironfish-cli/ start status | grep Syncer | awk '{print $2}' )
+    REALY=$( /usr/bin/ironfish status | grep Syncer | awk '{print $2}' )
     if [[ $REALY == IDLE ]]; then
         echo ""
         echo ""
         echo ""
         echo "Статус: $REALY"
         echo "Нода синхронізована! Перевіряємо баланс"
-        BALANCE=$( yarn --cwd ~/ironfish/ironfish-cli/ start accounts:balance | grep Amount | awk '{print $6}' | sed 's/\,//' )
+        BALANCE=$( /usr/bin/ironfish accounts:balance | grep Amount | awk '{print $6}' | sed 's/\,//' )
         if (( $(echo "${BALANCE} >= 0.10000001" | bc -l) )); then
             echo ""
             echo "На балансі $BALANCE токенів"
             echo "Баланс достатній, робимо транзакцію"
-            yarn --cwd ~/ironfish/ironfish-cli/ start deposit --confirm
+            /usr/bin/ironfish deposit --confirm
             sleep 180     
           
         else 
