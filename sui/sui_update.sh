@@ -2,8 +2,8 @@
 
 curl https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/logo/logo.sh | bash
 echo "Залітайте в наше Discord комюніті https://discord.gg/weSuTQ2Dx7"
-echo "Оновлення ноди Sui до версії 0.9.0 встановленої за гайдом NodesGuru."
-systemctl stop suid
+echo "Оновлення ноди Sui до версії 0.10.0 встановленої за гайдом NodesGuru."
+systemctl stop suid.service
 rm -rf /var/sui/db/* /var/sui/genesis.blob $HOME/sui
 source $HOME/.cargo/env
 cd $HOME
@@ -16,7 +16,7 @@ cargo build -p sui-node -p sui --release
 mv ~/sui/target/release/sui-node /usr/local/bin/
 mv ~/sui/target/release/sui /usr/local/bin/
 wget -O /var/sui/genesis.blob https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
-systemctl restart suid
+systemctl restart suid.service
 echo ""
 echo "Нода оновлена. Перевіряємо логи"
 sleep 10
