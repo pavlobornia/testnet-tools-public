@@ -1,12 +1,16 @@
 #!/bin/bash
 
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NOCOLOR='\033[0m'
+
 echo 'alias minima_profile="curl 127.0.0.1:9005/incentivecash | jq"' >> $HOME/.bash_profile 
 
 source $HOME/.bash_profile
 
-read -p 'MINIMA_ID: ' MINIMA_ID
+read -p "${GREEN}MINIMA_ID: ${NOCOLOR}" MINIMA_ID
 
-echo "Ваш id:" $MINIMA_ID 
+echo -e "${RED}Ваш id:${NOCOLOR}  " $MINIMA_ID 
 
 wget -O minima_remove.sh https://raw.githubusercontent.com/minima-global/Minima/master/scripts/minima_remove.sh && chmod +x minima_remove.sh && sudo ./minima_remove.sh -p 9001 -x
 
@@ -31,7 +35,14 @@ curl 127.0.0.1:9005/incentivecash%20uid:$MINIMA_ID | jq
 
 echo "Перевіряємо ID"
 
-curl 127.0.0.1:9005/incentivecash | grep $MINIMA_ID
+sleep 1
+
+if curl 127.0.0.1:9005/incentivecash | grep q $MINIMA_ID 
+then 
+echo -e "${GREEN}ID перезаписалось${NOCOLOR}"
+else 
+curl 127.0.0.1:9005/incentivecash%20uid:$MINIMA_ID | jq
+fi
 
 echo "Перевіряємо логи"
 
