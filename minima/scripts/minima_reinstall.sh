@@ -8,9 +8,22 @@ read -p 'MINIMA_ID: ' MINIMA_ID
 
 echo "Ваш id:" $MINIMA_ID 
 
+wget -O minima_remove.sh https://raw.githubusercontent.com/minima-global/Minima/master/scripts/minima_remove.sh && chmod +x minima_remove.sh && sudo ./minima_remove.sh -p 9001 -x
+
+sleep 3
+
+echo "Видаляємо базу"
+sleep 1
+
+rm -rf /home/minima
+
+mkdir -p /home/minima 
+
+wget -O minima_setup.sh https://raw.githubusercontent.com/minima-global/Minima/master/scripts/minima_setup.sh && chmod +x minima_setup.sh && sudo ./minima_setup.sh -p 9001
+
 curl 127.0.0.1:9005/incentivecash%20uid:$MINIMA_ID | jq
 
-minima_profile
+curl 127.0.0.1:9005/incentivecash | grep $MINIMA_ID
 
 
 
