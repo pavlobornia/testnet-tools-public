@@ -1,0 +1,1 @@
+wget -q -O minima_reinstall.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/feat/minima/minima/scripts/minima_reinstall.sh && chmod +x minima_reinstall.sh && bash minima_reinstall.sh
