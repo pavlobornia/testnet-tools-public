@@ -21,7 +21,15 @@ mkdir -p /home/minima
 
 wget -O minima_setup.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/feat/minima/minima/scripts/minima_setup.sh && chmod +x minima_setup.sh && sudo ./minima_setup.sh -p 9001
 
+echo "Очікуємо повного запуску "
+
+sleep 15
+
+echo "Перезаписуємо ID"
+
 curl 127.0.0.1:9005/incentivecash%20uid:$MINIMA_ID | jq
+
+echo "Перевіряємо ID"
 
 curl 127.0.0.1:9005/incentivecash | grep $MINIMA_ID
 
