@@ -2,7 +2,7 @@
 
 curl https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/logo/logo.sh | bash
 echo "Залітайте в наше Discord комюніті https://discord.gg/weSuTQ2Dx7"
-echo "Оновлення ноди Sui до версії 0.11.0 встановленої за гайдом NodesGuru."
+echo "Оновлення ноди Sui до версії 0.12.0 встановленої за гайдом NodesGuru."
 systemctl stop suid.service
 rm -rf /var/sui/db/* /var/sui/genesis.blob $HOME/sui
 source $HOME/.cargo/env
@@ -22,7 +22,7 @@ echo "Нода оновлена. Перевіряємо логи"
 sleep 10
 if dpkg --list | grep -q ccze;
 then
-        journalctl -n 100 -f -u suid.service | ccze -A
+        journalctl -fn 10 -u suid.service | ccze -A
 else
-        journalctl -n 100 -f -u suid.service
+        journalctl -fn 10 -u suid.service
 fi   
