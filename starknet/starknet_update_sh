@@ -2,23 +2,20 @@
 
 curl https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/logo/logo.sh | bash
 echo "Залітайте в наше Discord комюніті https://discord.gg/weSuTQ2Dx7"
-echo "Оновлення ноди Pathfinder до версії 0.3.7 встановленої за гайдом NodesGuru."
+echo "Оновлення ноди Starknet(Pathfinder) встановленої за гайдом NodesGuru."
 rustup update
 cd ~/pathfinder
 git fetch
-git checkout v0.3.7
+git checkout v0.3.8
 cargo build --release --bin pathfinder
 mv ~/pathfinder/target/release/pathfinder /usr/local/bin/
 cd py
 source .venv/bin/activate
 PIP_REQUIRE_VIRTUALENV=true pip install -r requirements-dev.txt
 pip install --upgrade pip
-systemctl restart starknetd
-echo "Перевіряємо версію"
-if pathfinder -V | grep -q "0.3.7";
-then
-        echo "Нода оновленна до необхідноі версії"        
-fi
+systemctl restart starknetd.service
+echo "Перевіряємо версію..."
+pathfinder -V 
 sleep 10
 echo "Перевіряємо логи"
 sleep 10
