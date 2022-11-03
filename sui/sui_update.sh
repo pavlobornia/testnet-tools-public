@@ -2,7 +2,7 @@
 
 curl https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/logo/logo.sh | bash
 echo "Залітайте в наше Discord комюніті https://discord.gg/weSuTQ2Dx7"
-echo "Оновлення ноди Sui до версії 0.12.1 встановленої за гайдом NodesGuru."
+echo "Оновлення ноди Sui встановленої за гайдом NodesGuru."
 systemctl stop suid.service
 rm -rf /var/sui/db/* /var/sui/genesis.blob $HOME/sui
 source $HOME/.cargo/env
