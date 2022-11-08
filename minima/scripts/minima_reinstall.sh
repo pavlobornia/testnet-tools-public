@@ -10,13 +10,13 @@ echo -e "Ваш id:  " $MINIMA_ID
 
 wget -O minima_remove.sh https://raw.githubusercontent.com/minima-global/Minima/master/scripts/minima_remove.sh && chmod +x minima_remove.sh && sudo ./minima_remove.sh -p 9001 -x
 
-sleep 1
+sleep 5
 
 echo "Видаляємо базу"
-sleep 1
+sleep 5
 
-rm -rf /home/minima/
-
+rm -rf /home/minima
+killall -u minima
 userdel minima
 
 
