@@ -15,15 +15,16 @@ sleep 1
 echo "Видаляємо базу"
 sleep 1
 
-rm -rf /home/minima
+rm -rf /home/minima/
 
-mkdir -p /home/minima 
+userdel minima
+
 
 wget -O minima_setup.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/feat/minima/minima/scripts/minima_setup.sh && chmod +x minima_setup.sh && sudo ./minima_setup.sh -p 9001
 
 echo "Очікуємо повного запуску "
 
-sleep 15
+sleep 20
 
 echo "Перезаписуємо ID"
 
