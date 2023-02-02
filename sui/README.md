@@ -7,3 +7,9 @@
 ```
 wget -q -O sui_update.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/sui/sui_update.sh && chmod +x sui_update.sh && bash sui_update.sh
 ```
+
+#### Testnet update:
+
+```
+wget -q -O sui_testnet_update.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/sui/testnet/sui_testnet_update.sh && chmod +x sui_testnet_update.sh && bash sui_testnet_update.sh
+```
