@@ -2,20 +2,18 @@
 
 curl https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/logo/logo.sh | bash
 echo "Залітайте в наше Discord комюніті https://discord.gg/weSuTQ2Dx7"
-echo "Оновлення ноди Sui встановленої за гайдом NodesGuru."
+echo "Оновлення ноди Sui в мережі тестнет встановленої за гайдом NodesGuru."
 systemctl stop suid.service
-rm -rf /var/sui/db/* /var/sui/genesis.blob $HOME/sui
-source $HOME/.cargo/env
-cd $HOME
+cd $HOME 
+rm -rf sui /var/sui/suidb/*
 git clone https://github.com/MystenLabs/sui.git
 cd sui
 git remote add upstream https://github.com/MystenLabs/sui
 git fetch upstream
-git checkout -B devnet --track upstream/devnet
-cargo build -p sui-node -p sui --release 
-mv ~/sui/target/release/sui-node /usr/local/bin/
-mv ~/sui/target/release/sui /usr/local/bin/
-wget -O /var/sui/genesis.blob https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
+git checkout -B testnet --track upstream/testnet
+git log --oneline -1
+cargo build --release --bin sui-node
+sudo mv ~/sui/target/release/sui-node /usr/local/bin/
 systemctl restart suid.service
 echo ""
 sui -V
@@ -27,3 +25,4 @@ then
 else
         journalctl -fn 10 -u suid.service
 fi   
+
