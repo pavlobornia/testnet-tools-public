@@ -2,29 +2,25 @@
 
 curl https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/logo/logo.sh | bash
 echo "Залітайте в наше Discord комюніті https://discord.gg/weSuTQ2Dx7"
-echo "Оновлення ноди Pathfinder до версії 0.3.6 встановленої за гайдом NodesGuru."
+echo "Оновлення ноди Starknet(Pathfinder) встановленої за гайдом NodesGuru."
 rustup update
 cd ~/pathfinder
 git fetch
-git checkout v0.3.6
+git checkout v0.4.5
 cargo build --release --bin pathfinder
 mv ~/pathfinder/target/release/pathfinder /usr/local/bin/
 cd py
 source .venv/bin/activate
-PIP_REQUIRE_VIRTUALENV=true pip install -r requirements-dev.txt
+PIP_REQUIRE_VIRTUALENV=true pip install -e .[dev]
 pip install --upgrade pip
-systemctl restart starknetd
-echo "Перевіряємо версію"
-if pathfinder -V | grep -q "0.3.6";
-then
-        echo "Нода оновленна до необхідноі версії"        
-fi
-sleep 10
+systemctl restart starknetd.service
+echo "Перевіряємо версію..."
+pathfinder -V 
 echo "Перевіряємо логи"
-sleep 10
+sleep 5
 if dpkg --list | grep -q ccze;
 then
-        journalctl -n 100 -f -u starknetd.service | ccze -A
+        journalctl -n 20 -f -u starknetd.service | ccze -A
 else
-        journalctl -n 100 -f -u starknetd.service
+        journalctl -n 20 -f -u starknetd.service
 fi   
