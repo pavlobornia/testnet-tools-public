@@ -4,8 +4,15 @@ curl https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/l
 echo "Залітайте в наше Discord комюніті https://discord.gg/weSuTQ2Dx7"
 echo "Оновлення ноди Sui в мережі тестнет встановленої за гайдом NodesGuru."
 systemctl stop suid.service
+read -p "Видалити базу даних? (y/n) " answer
 cd $HOME 
-rm -rf sui /var/sui/suidb/*
+if [ "$answer" == "y" ]; then
+  rm -rf /var/sui/suidb/*
+  echo "Видаляємо базу"      
+  sleep 5      
+  echo "База даних видалена."
+fi
+rm -rf sui 
 git clone https://github.com/MystenLabs/sui.git
 cd sui
 git remote add upstream https://github.com/MystenLabs/sui
