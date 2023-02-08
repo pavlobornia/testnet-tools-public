@@ -2,9 +2,17 @@
 
 curl https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/logo/logo.sh | bash
 echo "Залітайте в наше Discord комюніті https://discord.gg/weSuTQ2Dx7"
-echo "Оновлення ноди Sui встановленої за гайдом NodesGuru."
+echo "Оновлення ноди Sui в менежі девнет встановленої за гайдом NodesGuru."
+read -p "Видалити базу даних? (y/n) " answer
 systemctl stop suid.service
-rm -rf /var/sui/db/* /var/sui/genesis.blob $HOME/sui
+cd $HOME 
+if [ "$answer" == "y" ]; then
+  rm -rf /var/sui/suidb/*
+  echo "Видаляємо базу"      
+  sleep 5      
+  echo "База даних видалена."
+fi
+rm -rf /var/sui/genesis.blob $HOME/sui
 source $HOME/.cargo/env
 cd $HOME
 git clone https://github.com/MystenLabs/sui.git
