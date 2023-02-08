@@ -7,9 +7,7 @@ read -p "Видалити базу даних? (y/n) " answer
 systemctl stop suid.service
 cd $HOME 
 if [ "$answer" == "y" ]; then
-  rm -rf /var/sui/suidb/*
-  echo "Видаляємо базу"      
-  sleep 5      
+  rm -rf /var/sui/suidb/*    
   echo "База даних видалена."
 fi
 rm -rf /var/sui/genesis.blob $HOME/sui
