@@ -6,10 +6,11 @@ echo "Оновлення ноди Starknet(Pathfinder) встановленої 
 rustup update
 cd ~/pathfinder
 git fetch
-git checkout v0.4.5
+git checkout v0.5.2
 cargo build --release --bin pathfinder
 mv ~/pathfinder/target/release/pathfinder /usr/local/bin/
 cd py
+python3.10 -m venv .venv
 source .venv/bin/activate
 PIP_REQUIRE_VIRTUALENV=true pip install -e .[dev]
 pip install --upgrade pip
