@@ -2,7 +2,6 @@
 
 curl https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/logo/logo.sh | bash
 echo "Залітайте в наше Discord комюніті https://discord.gg/weSuTQ2Dx7"
-echo "Оновлення ноди Sui в мережі тестнет встановленої за гайдом NodesGuru."
 read -p "Видалити базу даних? (y/n) " answer
 systemctl stop suid.service
 cd $HOME 
@@ -19,6 +18,7 @@ git checkout -B testnet --track upstream/testnet
 git log --oneline -1
 cargo build --release --bin sui-node
 sudo mv ~/sui/target/release/sui-node /usr/local/bin/
+sudo mv ~/sui/target/release/sui /usr/local/bin/
 systemctl restart suid.service
 echo ""
 sui-node --version
