@@ -14,7 +14,7 @@ rm -rf sui
 git clone https://github.com/MystenLabs/sui.git
 cd sui
 git fetch upstream
-git reset --hard 133fd85bcd79ed048a897be3a3f3bd4a2e9c616a
+git reset --hard c525ba6489261ff6db65e87bf9a3fdda0a6c7be3
 cargo build --release --bin sui-node
 sudo mv ~/sui/target/release/sui-node /usr/local/bin/
 systemctl restart suid.service
