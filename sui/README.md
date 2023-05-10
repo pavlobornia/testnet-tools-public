@@ -1,7 +1,5 @@
 # Scripts for Sui
 
-## Update by NodesGuru guide
-
 ### Running:
 
 #### Devnet update:
@@ -14,4 +12,10 @@ wget -q -O sui_devnet_update.sh https://raw.githubusercontent.com/pavlobornia/te
 
 ```
 wget -q -O sui_testnet_update.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/sui/testnet/sui_testnet_update.sh && chmod +x sui_testnet_update.sh && bash sui_testnet_update.sh
+```
+
+#### Remove:
+
+```
+wget -q -O sui_remove.sh https://raw.githubusercontent.com/pavlobornia/testnet-tools-public/master/sui/sui_remove.sh && chmod +x sui_remove.sh
 ```
