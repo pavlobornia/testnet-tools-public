@@ -6,7 +6,7 @@ echo "Оновлення ноди Starknet(Pathfinder) встановленої 
 rustup update
 cd ~/pathfinder
 git fetch
-git checkout v0.5.2
+git checkout v0.5.4
 cargo build --release --bin pathfinder
 mv ~/pathfinder/target/release/pathfinder /usr/local/bin/
 cd py
